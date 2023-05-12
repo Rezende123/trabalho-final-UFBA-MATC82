@@ -5,4 +5,5 @@
 }
 .card {
   cursor: pointer;
+  max-width: 600px;
 }

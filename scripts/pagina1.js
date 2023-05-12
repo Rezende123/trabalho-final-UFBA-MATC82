@@ -50,11 +50,11 @@ function montaTexto(frases) {
     buscaGif()
       .then(({message: gif}) => {
         const card = $(`
-          <div class="card m-3 col-4">
+          <div class="card m-2 col-6">
           <img class="card-img-top" src="${gif}" alt="Gif Aleatorio">
             <div class="card-body">
               <h5 class="card-title">${author || 'Irineu'}</h5>
-              <p class="card-text">${text}</p>
+              <p class="card-text"><cite>${text}</cite></p>
             </div>
           </div>
         `);
