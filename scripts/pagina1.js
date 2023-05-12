@@ -53,7 +53,7 @@ function montaTexto(frases) {
           <div class="card m-3 col-4">
           <img class="card-img-top" src="${gif}" alt="Gif Aleatorio">
             <div class="card-body">
-              <h5 class="card-title">${author}</h5>
+              <h5 class="card-title">${author || 'Irineu'}</h5>
               <p class="card-text">${text}</p>
             </div>
           </div>
