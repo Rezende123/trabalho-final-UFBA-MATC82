@@ -37,20 +37,21 @@ function buscaGif() {
 }
 
 function montaTexto(frases) {
-  const obtemNumeroAleatorio = () => {
-    const min = 0, max = frases.length - 1
+  const obtemNumeroAleatorio = (maximo) => {
+    const min = 0, max = maximo - 1
     return Math.floor(Math.random() * (max - min) + min)
   }
 
   const inserirNovoCard = () => {
-    const indice = obtemNumeroAleatorio();
+    const indice = obtemNumeroAleatorio(frases.length);
     const frase = frases[indice];
     const { text, author } = frase;
+    const idElemento = (author || 'Ze').replaceAll(' ', '').replaceAll('.', '').replaceAll(',', '');
 
     buscaGif()
       .then(({message: gif}) => {
         const card = $(`
-          <div class="card m-2 col-6">
+          <div class="card m-2 col-6" id="${idElemento}">
             <img class="card-img-top" src="${gif}" alt="Gif Aleatorio">
             <div class="card-body">
               <h3 class="card-title">${author || 'Irineu'}</h3>
@@ -60,6 +61,23 @@ function montaTexto(frases) {
         `);
     
         $('#conteudo').append(card);
+
+        $(`#${idElemento}`).on('click', () => {
+          const audiosLatidos = [
+            '0000991.mp3',
+            '0000995.mp3',
+            '0000996.mp3',
+            '0000997.mp3',
+            '0000998.mp3'
+          ];
+          const indiceAudios = obtemNumeroAleatorio(audiosLatidos.length);
+          const audio = new Audio(`../assets/latidos/${audiosLatidos[indiceAudios]}`);
+          audio.play();
+          const timeout = setTimeout(() => {
+            audio.pause();
+            clearTimeout(timeout);
+          }, 5000)
+        });
       })
   }
 
