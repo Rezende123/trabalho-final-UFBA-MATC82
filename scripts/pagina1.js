@@ -51,9 +51,9 @@ function montaTexto(frases) {
       .then(({message: gif}) => {
         const card = $(`
           <div class="card m-2 col-6">
-          <img class="card-img-top" src="${gif}" alt="Gif Aleatorio">
+            <img class="card-img-top" src="${gif}" alt="Gif Aleatorio">
             <div class="card-body">
-              <h5 class="card-title">${author || 'Irineu'}</h5>
+              <h3 class="card-title">${author || 'Irineu'}</h3>
               <p class="card-text"><cite>${text}</cite></p>
             </div>
           </div>
